@@ -8,6 +8,7 @@ public:
         digits[i]+=1;
         return digits;
     }
+    else
     digits[i]=0;
    }
 
