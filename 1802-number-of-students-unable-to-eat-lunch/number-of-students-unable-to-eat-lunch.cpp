@@ -17,7 +17,7 @@ public:
             count=0;      }
             else{
                 q.push(q.front());
-                q.pop();
+               q.pop();
                 count++;
             }
 if(count>=q.size()){
