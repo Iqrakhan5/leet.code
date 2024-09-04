@@ -5,7 +5,7 @@ public:
         int high = nums.size() - 1;
 
         while (low <= high) {
-            int mid = low + (high - low) / 2; // Avoid potential overflow
+            int mid = (low +   high) / 2; // Avoid potential overflow
 
             if (nums[mid] == target) {
                 return mid; // Target found
