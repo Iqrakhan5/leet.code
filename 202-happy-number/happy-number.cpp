@@ -4,13 +4,13 @@ public:
        int sum=n;
         while(sum!=1 && sum!=4)
         {
-            int temp=+sum;
+            int digit=+sum;
             sum=0;
-            while(temp!=0)
+            while(digit!=0)
             {
-                int digit=temp%10;
-                sum+=digit*digit;
-                temp=temp/10;
+                int digit1=digit%10;
+                sum+=digit1*digit1;
+                digit=digit/10;
             }
         }
         return sum==1;
