@@ -1,11 +1,15 @@
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        int n = s.size();
-        // Create a new string by concatenating s with itself
-        string ss = s + s;
-
-        // Check if the substring excluding the first and last character contains s
-        return ss.find(s, 1) < n; 
+        string t=s;
+        for(int i=0;i<s.size()-1;i++)
+        {
+            t.push_back(t[0]);
+            t.erase(0,1);
+            if(t==s){
+return true;
+            }
+        }
+        return false;
     }
 };
