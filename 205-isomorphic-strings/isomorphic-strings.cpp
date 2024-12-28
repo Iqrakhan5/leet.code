@@ -1,31 +1,28 @@
-
-
 class Solution {
 public:
-    bool isIsomorphic(std::string s, std::string t) {
-        if (s.size() != t.size()) return false; // If lengths differ, they cannot be isomorphic
-
-        std::unordered_map<char, char> mappingS, mappingT;
-
-        for (int i = 0; i < s.size(); ++i) {
-            char charS = s[i];
-            char charT = t[i];
-
-            // Check mapping from s to t
-            if (mappingS.find(charS) == mappingS.end()) {
-                mappingS[charS] = charT; // Create a new mapping
-            } else if (mappingS[charS] != charT) {
-                return false; // Mismatch in mapping
-            }
-
-            // Check mapping from t to s
-            if (mappingT.find(charT) == mappingT.end()) {
-                mappingT[charT] = charS; // Create a new mapping
-            } else if (mappingT[charT] != charS) {
-                return false; // Mismatch in mapping
-            }
+    bool isIsomorphic(string s, string t) {
+        if (s.size() != t.size()) {
+            return false;
         }
 
-        return true; // All mappings are consistent
+        unordered_map<char, char> map_s_to_t;
+        unordered_map<char, char> map_t_to_s;
+
+        for (size_t i = 0; i < s.length(); ++i) {
+            char char_s = s[i];
+            char char_t = t[i];
+
+            // Check if the mappings are consistent
+            if ((map_s_to_t.count(char_s) && map_s_to_t[char_s] != char_t) ||
+                (map_t_to_s.count(char_t) && map_t_to_s[char_t] != char_s)) {
+                return false;
+            }
+
+            // Create the mappings if not already present
+            map_s_to_t[char_s] = char_t;
+            map_t_to_s[char_t] = char_s;
+        }
+
+        return true;
     }
 };
