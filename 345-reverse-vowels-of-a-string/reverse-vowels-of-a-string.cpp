@@ -1,30 +1,27 @@
 class Solution {
 public:
+bool isvowel(char ch){
+    if(ch=='A'|| ch== 'E'||ch=='I'|| ch== 'O'||ch=='U'|| ch== 'a'||ch=='e'|| ch== 'i'||ch=='o'|| ch== 'u')
+    return true;
+
+else 
+return false;}
     string reverseVowels(string s) {
-        string vowels = "aeiouAEIOU"; // All vowels
-    int left = 0, right = s.size() - 1; // Two pointers
+int start=0; int end=s.size()-1;
 
-    while (left < right) {
-        // Move left pointer until a vowel is found
-        while (left < right && vowels.find(s[left]) == string::npos) {
-            left++;
-        }
-        // Move right pointer until a vowel is found
-        while (left < right && vowels.find(s[right]) == string::npos) {
-            right--;
-        }
+while(start<end){
 
-        // Swap the vowels
-        if (left < right) {
-            swap(s[left], s[right]);
-            left++;
-            right--;
-        }
+    while(start< end && !isvowel(s[start]) ){
+        start++;
+    }
+    while(start< end && !isvowel(s[end])) {
+        end--;
+    }
+    if(start<end){
+        swap(s[start++],s[end--]);
     }
 
-    return s;
 }
-
-
-    
+return s;
+}         
 };
